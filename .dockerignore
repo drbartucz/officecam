@@ -1,0 +1,6 @@
+.git
+node_modules
+data
+*.mp4
+*.jpg
+__pycache__

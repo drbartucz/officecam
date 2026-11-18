@@ -1,0 +1,15 @@
+[Unit]
+Description=Officecam camera agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_PI_USERNAME
+EnvironmentFile=/etc/officecam.env
+ExecStart=/usr/bin/python3 /home/YOUR_PI_USERNAME/officecam/pi/camera_agent.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
