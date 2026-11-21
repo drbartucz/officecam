@@ -37,6 +37,9 @@ test("password, device upload, live view, and private archive", async (t) => {
   t.after(async () => { child.kill(); await rm(directory, { recursive: true, force: true }); });
   await waitForServer(base, child, () => output);
 
+  const page = await fetch(base);
+  assert.match(page.headers.get("content-security-policy"), /img-src[^;]*blob:/);
+
   assert.equal((await fetch(`${base}/api/overview`)).status, 401);
   const wrong = await fetch(`${base}/api/login`, { method: "POST", body: JSON.stringify({ password: "wrong" }) });
   assert.equal(wrong.status, 401);
