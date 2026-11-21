@@ -221,3 +221,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated Pi transfer package
+/officecam-pi-setup.zip
